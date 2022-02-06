@@ -145,7 +145,7 @@ MainFrame::MainFrame(wxWindow* parent, wxWindowID 	id, const wxString& title, co
 
 bool MyApp::OnInit()
 {
-    MainFrame* mainFrame = new MainFrame(NULL, wxID_ANY, "panScrollbarWithMouseDrag", wxPoint(100, 100), wxSize(640, 640));
+    MainFrame* mainFrame = new MainFrame(NULL, wxID_ANY, "wxPanGrid", wxPoint(100, 100), wxSize(640, 640));
     Canvas* canvas = new Canvas(mainFrame, wxID_ANY);
     mainFrame->Show(true);
     canvas->Scroll(696, 719);
