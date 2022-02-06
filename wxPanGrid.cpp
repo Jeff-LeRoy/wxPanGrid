@@ -101,30 +101,30 @@ void Canvas::rightIsUp(wxMouseEvent& event)
 
 void Canvas::OnDraw(wxDC& dc)
 {
-    //Draw Subgrid
+    //Draw subgrid
     dc.SetPen(wxPen(wxColor(41, 41, 41), 2));
-    //Horizontal middle and down -Y -> (0,1750),(3500,0)
+    //Horizontal - middle and down -Y -> (0,1750),(3500,0)
     for (int i{ virtualSize.y / 2 }; i < virtualSize.y; i += subgridPixelSpacing) {
-        dc.DrawLine(wxPoint(0, i), wxPoint(virtualSize.y, i));
+        dc.DrawLine(wxPoint(0, i), wxPoint(virtualSize.x, i));
     }
-    //Horizontal middle and up +Y -> (0,1750),(3500,0)
+    //Horizontal - middle and up +Y -> (0,1750),(3500,0)
     for (int i{ virtualSize.y / 2 }; i > 0; i -= subgridPixelSpacing) {
-        dc.DrawLine(wxPoint(0, i), wxPoint(virtualSize.y, i));
+        dc.DrawLine(wxPoint(0, i), wxPoint(virtualSize.x, i));
     }
-    //Vertical middle and right to +X -> (1750,0),(0,3500)
+    //Vertical - middle and right to +X -> (1750,0),(0,3500)
     for (int i{ virtualSize.x / 2 }; i < virtualSize.x; i += subgridPixelSpacing) {
         dc.DrawLine(wxPoint(i, 0), wxPoint(i, virtualSize.y));
     }
-    //Vertical middle and left to -X -> (1750,0),(0,3500)
+    //Vertical - middle and left to -X -> (1750,0),(0,3500)
     for (int i{ virtualSize.x / 2 }; i > 0; i -= subgridPixelSpacing) {
         dc.DrawLine(wxPoint(i, 0), wxPoint(i, virtualSize.y));
     }
 
     //Draw axis lines X and Y
     dc.SetPen(wxPen(wxColor(75, 55, 55), 4));
-    dc.DrawLine(wxPoint(0, virtualSize.y / 2), wxPoint(virtualSize.y, virtualSize.y / 2));//H
+    dc.DrawLine(wxPoint(0, virtualSize.y / 2), wxPoint(virtualSize.x, virtualSize.y / 2));//H
     dc.SetPen(wxPen(wxColor(55, 55, 75), 4));
-    dc.DrawLine(wxPoint(virtualSize.x / 2, 0), wxPoint(virtualSize.x / 2, virtualSize.x));//V
+    dc.DrawLine(wxPoint(virtualSize.x / 2, 0), wxPoint(virtualSize.x / 2, virtualSize.y));//V
 }
 
 void Canvas::onCaptureLost(wxMouseCaptureLostEvent& event)
